@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<!-- loop out of stock text change -->
+<script>
+    function replaceStockText() {
+        document.querySelectorAll(".stock").forEach(el => {
+            if (el.textContent.includes("Nicht vorrätig")) {
+                el.textContent = "Out of stock";
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", replaceStockText);
+
+    const observer = new MutationObserver(replaceStockText);
+    observer.observe(document.body, { childList: true, subtree: true });
+</script>
+
+
+<!-- if out of stock হলে price hide করার জন্য নিচের কোডটি ব্যবহার করতে পারেনঃ -->
+
+<!-- add_filter('woocommerce_get_price_html', 'hide_price_if_out_of_stock', 10, 2);
+
+function hide_price_if_out_of_stock($price, $product) {
+
+    if (!$product->is_in_stock()) {
+        return ''; // price hide
+    }
+
+    return $price; // in stock হলে price show
+} -->
+

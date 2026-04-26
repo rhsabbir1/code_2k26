@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .line-container {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .line {
+            height: 3px;
+            width: 100%;
+            background: black;
+            margin: 6px 0;
+            border-radius: 3px;
+        }
+
+        /* middle line */
+        .line:nth-child(2) {
+            transition: opacity 0.2s ease;
+        }
+
+        /* ACTIVE → hamburger to X */
+        .line-container.active .line:nth-child(1) {
+            animation: topLine 0.5s forwards;
+        }
+
+        .line-container.active .line:nth-child(3) {
+            animation: bottomLine 0.5s forwards;
+        }
+
+        .line-container.active .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        /* REVERSE → X to hamburger */
+        .line-container:not(.active) .line:nth-child(1) {
+            animation: topLineReverse 0.5s forwards;
+        }
+
+        .line-container:not(.active) .line:nth-child(3) {
+            animation: bottomLineReverse 0.5s forwards;
+        }
+
+        .line-container:not(.active) .line:nth-child(2) {
+            opacity: 1;
+        }
+
+        /* FORWARD */
+        @keyframes topLine {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(9px);
+            }
+
+            100% {
+                transform: translateY(9px) rotate(45deg);
+            }
+        }
+
+        @keyframes bottomLine {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+
+            100% {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+
+        /* REVERSE */
+        @keyframes topLineReverse {
+            0% {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            50% {
+                transform: translateY(9px);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @keyframes bottomLineReverse {
+            0% {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="line-container">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <script>
+        const menu = document.querySelector('.line-container');
+
+        menu.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
