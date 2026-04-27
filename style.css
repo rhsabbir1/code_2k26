@@ -1,0 +1,22 @@
+
+
+/* for icon  */
+
+selector .elementor-icon-wrapper{
+    display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+/* <!-- Off canvas time controle code  --> */
+
+
+  .elementor-widget-off-canvas,
+#off-canvas-20e87f3 {
+  --e-off-canvas-animation-duration: 0.8s;
+  --e-off-canvas-animation-duration-minimum: max(0.001s, var(--e-off-canvas-animation-duration));
+}
+
+/* <!-- Off canvas time controle code  --> */
+
